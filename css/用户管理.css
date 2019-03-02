@@ -1,0 +1,191 @@
+/* 实验室列表 */
+.logo-wrapper {
+  padding: 0px 20px;
+  overflow: hidden;
+}
+.data {
+  width: 88%;
+  height: 100%;
+  background: #f3f3f3;
+  padding: 72px 20px 0;
+  overflow: scroll;
+}
+.data:after {
+  min-height: calc(101%);
+}
+.lab-list {
+  color: #676767;
+  background: #ffffff;
+}
+.lab-list .lab-list-title {
+  color: #808080;
+  font-size: 12px;
+  font-weight: normal;
+  padding: 10px 20px;
+  overflow: hidden;
+}
+.lab-list .lab-list-title .iconfont {
+  color: #c0c0c0;
+  font-size: 13px;
+  margin-left: 8px;
+  cursor: pointer;
+}
+.table > thead > tr > th {
+  border-bottom: 1px solid #f3f3f3;
+}
+tr {
+  color: #676767;
+}
+tr th {
+  color: #6d6d6d;
+}
+tr th:first-child {
+  text-indent: 1em;
+}
+tr td {
+  word-break: keep-all;
+  white-space: nowrap;
+}
+tr td:first-of-type {
+  text-indent: 1em;
+}
+tr td:last-child {
+  cursor: pointer;
+}
+tr td:last-child:hover {
+  color: #608bdb;
+}
+.table thead {
+  border-top: 1px solid #f3f3f3;
+}
+.table tbody tr {
+  border-bottom: 1px solid #f3f3f3;
+}
+.table tbody tr:nth-child(odd) {
+  background: #f9f9f9;
+}
+.table tbody tr td {
+  border-top: none;
+}
+.form-control {
+  font-size: 12px;
+  box-shadow: none;
+}
+.form-control:focus {
+  border-color: #e6e6e6;
+  box-shadow: none;
+}
+.ec_m {
+  width: 100%;
+  height: 400px;
+}
+.left_pad {
+  padding: 0;
+  padding-right: 15px;
+}
+@media (max-width: 768px) {
+  .nj_line {
+    border: none!important;
+  }
+  .ec_m {
+    width: 100%;
+    height: 200px;
+  }
+  .data {
+    width: 100%;
+    padding: 70px 20px 20px;
+  }
+  .data_show tr td {
+    padding: 5px!important;
+    font-size: 12px!important;
+  }
+  .mp0 {
+    padding: 0!important;
+  }
+  .lab-list .lab-list-title {
+    padding: 15px 0;
+  }
+  .row {
+    margin-left: 0;
+    margin-right: 0;
+  }
+  .form-horizontal .form-group {
+    margin-left: 0;
+    margin-right: 0;
+  }
+  .form-horizontal .control-label {
+    text-align: left;
+  }
+}
+.demo_but {
+  background: #596b8c;
+  color: #fff;
+  text-align: center;
+  padding: 4px 15px;
+  border-radius: 20px;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+  user-select: none;
+  font-size: 12px;
+  margin-left: 10px;
+}
+.demo_but:hover {
+  background: #313b4e;
+}
+.lab-list-title .checkbox label {
+  line-height: 20px;
+  margin-right: 20px;
+}
+.progress-bar-success {
+  background-color: #1c4f7c;
+}
+.progress-bar-warning {
+  background-color: #4CAF50;
+}
+.progressPart {
+  padding: 15px 0;
+}
+.progressArea_half {
+  width: 45%;
+  float: left;
+}
+.progressArea_half:nth-of-type(odd) {
+  float: left;
+}
+.progressArea_half:nth-of-type(even) {
+  float: right;
+}
+.progressArea_half .progress-bar-success {
+  background-color: #2f84cf;
+}
+.progressArea_half .progress-bar-warning {
+  background-color: #92cf94;
+}
+.datepicker table tr td span {
+  text-align: left;
+}
+.data_show {
+  width: 100%;
+}
+.data_show tr td {
+  background: #f3f3f3;
+  border: 4px solid #fff;
+  padding: 15px;
+}
+.data_show tr td .kone_blue_i {
+  font-size: 22px;
+  color: #1c4f7c;
+  font-style: italic;
+}
+select[name='sub_select'] {
+  display: none;
+  float: right;
+}
+.nj_line {
+  border-left: 1px solid #f1f1f1;
+}
+#ec_top,
+#ec_bottom {
+  width: 100%;
+  height: 300px;
+}

@@ -1,0 +1,206 @@
+@gray: #808080;
+@b-gray: #ebebeb;
+@blue: #1c4f7c;
+@white: lighten(@gray, 100%);
+@green: #a6e160;
+
+html, body {
+  height: 100%;
+  font-size: 12px;
+}
+
+.main {
+  height: 100%;
+  padding-top: 100px;
+  background-image: url(../img/login.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.header {
+  text-align: center;
+}
+
+.header_title {
+  font-size: 60px;
+  color: #fff;
+  text-align: left;
+  padding-left: 11%;
+  margin-top: 150px;
+}
+
+.login {
+  margin: 50px auto;
+  //background: #fff;
+  width: 500px;
+  height: 280px;
+  padding: 40px 30px;
+  margin-left: 10%;
+  margin-bottom: 0;
+}
+
+form {
+  overflow: hidden;
+}
+
+.l_input {
+  width: 100%;
+  color: #fff;
+  background: none;
+  //border-bottom: 1px solid lighten(@blue, 10%);
+  border-bottom: 1px solid #fff;
+  margin-top: 10px;
+  border-radius: 0;
+  outline: none;
+}
+
+.l_input::-moz-placeholder {
+  color: #fff;
+}
+
+.l_input::-webkit-input-placeholder {
+  color: #fff;
+}
+
+.l_input:-ms-input-placeholder {
+  color: #fff;
+}
+
+input {
+  border-width: 0;
+}
+
+.name, .psw {
+  margin-bottom: 40px;
+}
+
+.forget {
+  cursor: pointer;
+  float: left;
+  cursor: pointer;
+}
+
+.login-btn {
+  display: block;
+  float: right;
+  font-size: 12px;
+  padding: 3px 30px 1px;
+  color: #fff;
+  background: @green;
+  cursor: pointer;
+  line-height: 26px;
+  text-shadow: 0 0 10px #1d2b0b7a;
+  transition: all .2s;
+}
+
+.login-btn:hover {
+  background: darken(@green, 10%);
+}
+
+a, a:link, a:visited, a:hover, a:active {
+  text-decoration: none;
+  color: #fff;
+}
+.footer {
+  position: absolute;
+  bottom: 10px;
+  right: 30px;
+}
+
+.footer img {
+  width: 50px;
+}
+
+.b-color {
+  // color: #a5bceb;
+  //color: lighten(@blue, 25%);
+  color: #fff;
+}
+
+.deep-blue {
+  color: lighten(@blue, 10%);;
+}
+
+/* 忘记密码 */
+.modal-content {
+  border-radius: 0;
+}
+
+@media (max-width: 768px) {
+  .main {
+    padding-top: 50px;
+  }
+
+  .header {
+    margin-top: 50px;
+  }
+
+  .header img {
+    width: 200px;
+  }
+
+  .login {
+    width: 80%;
+    padding: 0;
+  }
+
+  .footer {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    margin-left: -25px;
+  }
+
+  .footer img {
+    width: 50px;
+  }
+
+  .header_title {
+    font-size: 24px;
+    margin-top: 0;
+  }
+}
+
+.form-horizontal {
+  .form-group {
+    margin-left: 0;
+    margin-right: 0;
+    // padding: 0 20px;
+  }
+  .control-label {
+    text-align: left;
+    // padding-left: 5px;
+  }
+}
+
+.form-control {
+  font-size: 12px;
+  box-shadow: none;
+  border: 1px solid @b-gray;
+  &:focus {
+    border-color: lighten(@gray, 40%);
+    box-shadow: none;
+  }
+}
+
+.save, .send {
+  outline: none;
+  border: none;
+  background-color: @blue;
+  // border-color: @blue;
+  color: @white;
+}
+
+.save {
+  padding: 4px 24px 2px;
+}
+
+.save:hover, .send:hover {
+  background-color: darken(@blue, 8%);
+  // border-color: darken(@blue, 8%);
+}
+
+.send {
+  margin-top: 5px;
+  padding: 4px 20px 2px;
+}

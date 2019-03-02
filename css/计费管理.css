@@ -1,0 +1,145 @@
+/* 实验室列表 */
+.logo-wrapper {
+  padding: 0px 20px;
+  overflow: hidden;
+}
+.data {
+  width: 88%;
+  height: 100%;
+  background: #e9f1fe;
+  padding: 72px 20px 0;
+  overflow: scroll;
+}
+.lab-list {
+  color: #676767;
+  background: #ffffff;
+}
+.nav-tabs {
+  padding-left: 20px;
+  border-bottom: 1px solid #f3f3f3;
+}
+.nav-tabs > li.active > a {
+  color: #ffffff;
+  border: 1px solid #f3f3f3;
+  border-bottom-color: transparent;
+}
+.nav-tabs > li.active > a:focus {
+  color: #ffffff;
+  border: 1px solid #f3f3f3;
+  border-bottom-color: transparent;
+}
+.nav-tabs > li.active > a:hover {
+  color: #ffffff;
+  border: 1px solid #f3f3f3;
+  border-bottom-color: transparent;
+}
+.nav > li {
+  cursor: pointer;
+}
+.nav > li > a {
+  padding: 6px 15px 2px 15px;
+  color: #b3b3b3;
+}
+/* 新闻 */
+.news-title {
+  padding: 20px;
+  color: #b3b3b3;
+}
+.news-title .iconfont {
+  color: #c0c0c0;
+  font-size: 13px;
+  margin-left: 8px;
+  cursor: pointer;
+}
+/* 公告 */
+.notice-title {
+  padding: 20px 20px 10px;
+  color: #b3b3b3;
+}
+.notice-title .iconfont {
+  color: #c0c0c0;
+  font-size: 13px;
+  margin-left: 8px;
+  cursor: pointer;
+}
+.news {
+  padding: 0 20px 20px 20px;
+  overflow: hidden;
+}
+.news-content {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.news-details {
+  text-align: center;
+}
+.news-details .blue:hover {
+  color: #fff;
+}
+.news-details .red:hover {
+  color: #d32b2a;
+}
+.row {
+  margin-left: 0;
+  margin-right: 0;
+}
+@media (max-width: 767px) {
+  .data {
+    width: 100%;
+    height: 102%;
+    padding: 70px 20px 20px;
+  }
+  .news-num {
+    text-align: left;
+    padding: 0;
+    text-indent: 6px;
+  }
+  .lab-list .lab-list-title {
+    padding: 15px;
+  }
+  .form-horizontal .form-group {
+    margin-left: 0;
+    margin-right: 0;
+  }
+  .form-horizontal .control-label {
+    text-align: left;
+  }
+  .row-height {
+    margin-bottom: 10px;
+  }
+}
+.form-control {
+  font-size: 12px;
+  box-shadow: none;
+}
+.form-control:focus {
+  border-color: #e6e6e6;
+  box-shadow: none;
+}
+.price_way {
+  padding: 0;
+}
+.price_way .price_way_area {
+  margin: 10px;
+  background: #f7f8f9;
+  padding: 20px 20px 10px;
+  overflow: hidden;
+}
+.price_way .price_way_area .way_info {
+  text-align: right;
+}
+.price_way .price_way_area .way_title {
+  font-size: 16px;
+  color: #596b8c;
+  font-weight: 500;
+}
+.price_way .price_way_area .action span {
+  margin-top: 10px;
+  color: #596b8c;
+  font-size: 12px;
+  cursor: pointer;
+}
+.price_way .price_way_area .action span:hover {
+  color: #2ec5d3;
+}

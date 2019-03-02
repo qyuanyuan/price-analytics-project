@@ -1,0 +1,350 @@
+.pad0 {
+  padding: 0!important;
+}
+body {
+  background: #f3f3f3;
+}
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  background: #fff;
+  width: 180px;
+}
+.sidebar .logo {
+  color: #596b8c;
+  margin: 0;
+  line-height: 50px;
+  text-align: center;
+  font-size: 20px;
+  font-weight: 300;
+}
+.sidebar .sidebar_ul {
+  list-style: none;
+  padding: 0;
+  line-height: 50px;
+}
+.sidebar .sidebar_ul a {
+  color: #596b8c;
+  display: block;
+  text-decoration: none;
+  overflow: hidden;
+  cursor: pointer;
+}
+.sidebar .sidebar_ul a:hover {
+  background: #f3f3f3;
+}
+.sidebar .sidebar_ul a li {
+  position: relative;
+  padding-right: 30px;
+  height: 50px;
+}
+.sidebar .sidebar_ul a em {
+  position: absolute;
+  display: block;
+  width: 4px;
+  height: 50px;
+}
+.sidebar .sidebar_ul a .menu {
+  margin-left: 30px;
+  user-select: none;
+}
+.sidebar .sidebar_ul a span {
+  padding: 0 30px 0 10px;
+  user-select: none;
+}
+.sidebar .sidebar_ul a .dropdown {
+  float: right;
+  margin-right: 20px;
+}
+.sidebar .sidebar_ul .sub_list {
+  display: none;
+  overflow: hidden;
+  padding-left: 0;
+}
+.sidebar .sidebar_ul .sub_list span {
+  float: right;
+}
+.sidebar .sidebar_ul .active em {
+  background: #2ec5d3;
+}
+.sidebar .sidebar_ul .active .menu {
+  color: #2ec5d3;
+}
+.page {
+  background: #000;
+  margin-left: 12%;
+  height: 100%;
+}
+.page .nav {
+  line-height: 56px;
+  padding: 0 30px;
+  color: #fff;
+  background: #596b8c;
+}
+.page .nav .iconfont {
+  float: right;
+  margin: 0 6px;
+  cursor: pointer;
+  font-size: 20px;
+  user-select: none;
+}
+.page .content {
+  padding-top: 30px;
+  background: #f3f3f3;
+  box-shadow: inset 9px 0 10px -9px rgba(0, 0, 0, 0.08);
+  height: 100%;
+}
+.page .content .part {
+  background: #fff;
+  padding: 25px;
+  margin-top: 25px;
+}
+.page .content .part .title {
+  font-size: 16px;
+  color: #596b8c;
+  padding: 15px;
+  margin: 0;
+  font-weight: 800;
+}
+.filter {
+  width: 100%;
+  padding: 0 15px;
+  overflow: hidden;
+}
+.filter select {
+  width: 100%;
+}
+.scroll {
+  width: 100%;
+  height: 98%;
+  overflow: scroll;
+  padding: 0 0 10px 0;
+  color: #4d4d4d;
+}
+.scroll li {
+  padding: 10px 0;
+  border-left: 10px solid transparent;
+}
+.scroll li:nth-child(odd) {
+  background: #f4f9fd;
+}
+.scroll .selected {
+  border-left: 10px solid #f4d336;
+}
+.scroll .num,
+.scroll .room,
+.scroll .use {
+  display: inline-block;
+}
+.scroll .num {
+  width: 12%;
+  margin-right: 20px;
+  text-align: center;
+  color: #676767;
+}
+.scroll .room {
+  width: 60%;
+}
+.scroll .use {
+  width: 15%;
+  text-align: right;
+}
+.part .button {
+  background: #596b8c;
+  color: #fff;
+  text-align: center;
+  padding: 4px 0;
+  border-radius: 20px;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+  user-select: none;
+}
+.part .button:hover {
+  background: #313b4e;
+}
+#floor {
+  width: 100%;
+}
+.popUp {
+  position: fixed;
+  display: none;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  width: 100%;
+  height: 100%;
+}
+.popUp .floor_info {
+  position: absolute;
+  min-width: 200px;
+  background: rgba(89, 107, 140, 0.8);
+  color: #ffffff;
+  box-shadow: 0 0 10px 0 rgba(89, 107, 140, 0.2);
+  font-size: 14px;
+  padding: 10px 0;
+  border-radius: 2px;
+}
+.popUp .floor_info p {
+  padding: 2px 15px;
+  margin: 0;
+}
+.popUp .floor_info .room_info {
+  overflow: hidden;
+  border-bottom: 1px solid #e6ecf3;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+}
+#svg {
+  height: 542px;
+  margin: 0 auto;
+  display: block;
+}
+#svg .st0 {
+  fill: #877144;
+}
+#svg .st1 {
+  fill: none;
+  stroke: #847653;
+  stroke-width: 0.42;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-miterlimit: 10;
+}
+#svg .st2 {
+  fill: none;
+  stroke: #7A6944;
+  stroke-width: 0.42;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-miterlimit: 10;
+}
+#svg .st3 {
+  fill: none;
+  stroke: #8A7959;
+  stroke-width: 0.42;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-miterlimit: 10;
+}
+#svg .st4 {
+  fill-rule: evenodd;
+  clip-rule: evenodd;
+  fill: #847653;
+}
+#svg .st5 {
+  fill: none;
+  stroke: #A0927A;
+  stroke-width: 0.42;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-miterlimit: 10;
+}
+#svg .st6 {
+  fill-rule: evenodd;
+  clip-rule: evenodd;
+  fill: #7A6944;
+}
+#svg .st7 {
+  fill-rule: evenodd;
+  clip-rule: evenodd;
+  fill: #A0927A;
+}
+#svg .st8 {
+  fill: none;
+  stroke: #7A6944;
+  stroke-width: 6 e-02;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-miterlimit: 10;
+}
+#svg .st9 {
+  fill: #FFFFFF;
+}
+#svg .st10 {
+  fill: none;
+  stroke: #856F44;
+  stroke-width: 0.394;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-miterlimit: 10;
+}
+#svg .st11 {
+  fill: none;
+  stroke: #856F44;
+  stroke-width: 0.321;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-miterlimit: 10;
+}
+#svg .st12 {
+  fill: none;
+  stroke: #856F44;
+  stroke-width: 0.296;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-miterlimit: 10;
+}
+#svg .st13 {
+  fill: none;
+  stroke: #856F44;
+  stroke-width: 0.404;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-miterlimit: 10;
+}
+#svg .st14 {
+  fill: none;
+  stroke: #856F44;
+  stroke-width: 0.361;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-miterlimit: 10;
+}
+#svg .st15 {
+  fill: #826D42;
+}
+#svg .st16 {
+  opacity: 0.53;
+}
+#svg .st17 {
+  fill-rule: evenodd;
+  clip-rule: evenodd;
+  fill: #596B8C;
+}
+#svg #mode path {
+  cursor: pointer;
+}
+#svg #mode path:hover {
+  fill: #4264a3;
+}
+#svg #mode .on {
+  fill: #f4d336;
+}
+#svg #mode .on:hover {
+  fill: #ffda2b;
+}
+.schedule {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  padding: 15px;
+}
+.schedule .line td {
+  padding: 0;
+  font-size: 12px;
+  line-height: 20px;
+  text-indent: 1em;
+}
+.schedule .line .time {
+  user-select: none;
+  width: 90px;
+}
+.schedule .timePick {
+  cursor: pointer;
+  width: 20px;
+}
+.schedule .picked {
+  background: #e6ecf3;
+}
