@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Data Analytics Tool</title>
+    <link rel="shortcut icon" href="img/short.ico" type="image/x-icon">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/icon.css">
+    <link rel="stylesheet" href="css/select2.min.css">
+    <link rel="stylesheet" href="css/common.css">
+
+    <link rel="stylesheet" href="css/用户管理.css">
+    <link rel="stylesheet" href="css/fullCalendar_cwx.css">
+
+    <script src="js/echarts.js"></script>
+    <script src="js/jquery-3.2.1.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/bootstrap-datepicker.min.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/select2_cwx.js"></script>
+    <script src="js/kone.js"></script>
+    <script src="js/fakeJump.js"></script>
+
+
+</head>
+<body>
+
+<!-- top -->
+<div class="l-header hidden-xs">
+    <div class="l-user pull-right">
+        <div class="pull-left">数据引擎<i class="iconfont kone_add" data-toggle="modal" data-target="#myModal">&#xe650;</i>
+        </div>
+        <div class="pull-right icon">
+            <i class="iconfont" data-toggle="modal" data-target="#mine">&#xe6ec;</i>
+        </div>
+    </div>
+</div>
+
+<!-- mobile top -->
+<div class="container-fluid m-l-nav visible-xs">
+    <div class="row pabo">
+        <div class="logo-wrapper col-sm-12">
+            <div class="logo pull-left">
+                <span>Data Analytics Tool</span>
+            </div>
+            <div class="m-user pull-right">
+                <i class="nav-btn iconfont">&#xe656;</i>
+            </div>
+        </div>
+    </div>
+    <div class="m-nav-list">
+        <div class="m-nav-ul">
+            <div class="menuList">
+                <div class="sub_title">
+                    <i class="iconfont">&#xe6dc;</i>
+                    <span class="text" id="">定价管理</span>
+                    <i class="iconfont drop_Arrow">&#xe65b;</i>
+                </div>
+                <ul class="sub_menu">
+                    <li style="text-align: center;"><span class="text">价格计算</span></li>
+                    <li style="text-align: center;"><span class="text">数据仓库</span></li>
+                    <li style="text-align: center;"><span class="text">暂存项目</span></li>
+                </ul>
+            </div>
+            <div class="menuList">
+                <i class="iconfont">&#xe764;</i>
+                <span class="text">销售管理</span>
+                <i class="iconfont drop_Arrow">&#xe65b;</i>
+            </div>
+            <div class="menuList">
+                <div class="sub_title">
+                    <i class="iconfont">&#xe606;</i>
+                    <span class="text" id="">市场环境</span>
+                    <i class="iconfont drop_Arrow">&#xe65b;</i>
+                </div>
+                <ul class="sub_menu">
+                    <li style="text-align: center;"><span class="text">数据引擎</span></li>
+                    <li style="text-align: center;"><span class="text">引擎仓库</span></li>
+                </ul>
+            </div>
+            <div class="menuList">
+                <i class="iconfont">&#xe61c;</i>
+                <span class="text">营销报告</span>
+                <i class="iconfont drop_Arrow">&#xe65b;</i>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 半透明层 -->
+<div class="m-nav-black"></div>
+<div class="page">
+    <!-- 左侧菜单aside -->
+    <div class="l-nav pull-left hidden-xs">
+        <div class="menu">
+            <img src="img/logo_en.png" class="logo_ud" alt="">
+            <!--<p>Data Analytics Tool</p>-->
+            <div class="l-nav-ul">
+                <div class="menuList">
+                    <div class="sub_title">
+                        <i class="iconfont">&#xe6dc;</i>
+                        <span class="text" id="sub_but">定价管理</span>
+                        <i class="iconfont drop_Arrow">&#xe65b;</i>
+                    </div>
+                    <ul class="sub_menu">
+                        <li style="text-align: center;"><span class="text">价格计算</span></li>
+                        <li style="text-align: center;"><span class="text">数据仓库</span></li>
+                        <li style="text-align: center;"><span class="text">暂存项目</span></li>
+                    </ul>
+                </div>
+                <div class="menuList">
+                    <i class="iconfont">&#xe764;</i>
+                    <span class="text">销售管理</span>
+                    <i class="iconfont drop_Arrow">&#xe65b;</i>
+                </div>
+                <div class="menuList">
+                    <div class="sub_title">
+                        <i class="iconfont">&#xe606;</i>
+                        <span class="text" id="sub_but2">市场环境</span>
+                        <i class="iconfont drop_Arrow">&#xe65b;</i>
+                    </div>
+                    <ul class="sub_menu">
+                        <li style="text-align: center;"><span class="text">数据引擎</span></li>
+                        <li style="text-align: center;"><span class="text">引擎仓库</span></li>
+                    </ul>
+                </div>
+                <div class="menuList">
+                    <i class="iconfont">&#xe61c;</i>
+                    <span class="text">营销报告</span>
+                    <i class="iconfont drop_Arrow">&#xe65b;</i>
+                </div>
+                <script>
+                    $(function () {
+                        $(".sub_title").click(function () {
+                            var jj = $(this).siblings(".sub_menu").css("display");
+                            if (jj == "none") {
+                                $(this).siblings(".sub_menu").slideDown(200);
+                                $(this).find(".drop_Arrow").html("&#xe626;");
+                            } else {
+                                $(this).siblings(".sub_menu").slideUp(200);
+                                $(this).find(".drop_Arrow").html("&#xe65b;");
+                            }
+
+                        })
+                    })
+                </script>
+            </div>
+        </div>
+    </div>
+
+    <!-- 右侧 数据 -->
+    <!-- 用户信息 -->
+    <div class="hideBar">
+        <!-- <div class="data pull-right" data-b="content-3"> -->
+        <div class="data pull-right">
+            <div class="lab-list">
+                <div class="lab-list-title mp0" style="padding-top: 30px;">
+                    <div class="col-xs-12 col-md-6 mp0">
+                        <table class="data_show">
+                            <tr>
+                                <td>
+                                    <p>数据总量</p>
+                                    <p class="kone_blue_i">4,264,115</p>
+                                </td>
+                                <td>
+                                    <p>近三月数据</p>
+                                    <p class="kone_blue_i">9,043</p>
+                                </td>
+                                <td>
+                                    <p>采集门户</p>
+                                    <p class="kone_blue_i">6</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p>索引词汇</p>
+                                    <p class="kone_blue_i">32</p>
+                                </td>
+                                <td colspan="2">
+                                    <p>采集频率</p>
+                                    <span class="kone_blue_i">每月</span>
+                                    <span class="kone_blue_i" style="float: right;margin-right: 25%;">15日</span>
+                                    </p>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="col-xs-12 col-md-6">
+                        <div id="main" style="width: 100%;height:202px;"></div>
+                        <script>
+                            $(function () {
+                                var myChart = echarts.init(document.getElementById('main'),"macarons");
+                                option = {
+                                    title: {
+                                        text: '单月数据抓取量',
+                                        textStyle: {
+                                            color: '#1c4f7c',
+                                            fontSize:"14"
+                                        }
+                                    },
+                                    tooltip : {
+                                        trigger: 'axis',
+                                        axisPointer : {            // 坐标轴指示器，坐标轴触发有效
+                                            type : 'line'        // 默认为直线，可选为：'line' | 'shadow'
+                                        }
+                                    },
+                                    xAxis: {
+                                        type: 'category',
+                                        data: ['2017-11', '2017-12', '2018-1', '2018-2', '2018-3', '2018-4', '2018-5','2018-6', '2018-7', '2018-8', '2018-9', '2018-10', '2018-11', '2018-12']
+                                    },
+                                    yAxis: {
+                                        type: 'value'
+                                    },
+                                    series: [{
+                                        data: [3841,2451,5361,6131,4201,6231,5083,3841,2451,5361,6131,4201,6231,5083],
+                                        type: 'bar'
+                                    }]
+                                };
+                                myChart.setOption(option);
+                            })
+                        </script>
+                    </div>
+                </div>
+                <!-- 用户信息 -->
+                <div class="device-info" id="table_list">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th>采集门户</th>
+                                <th>地址</th>
+                                <th>采集关键字</th>
+                                <th>数据池</th>
+                                <th>近三月数据</th>
+                                <th>操作</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>中国电梯网</td>
+                                <td>http://www.elevatorbuy.com/</td>
+                                <td>KONE、通力、三荣、大通</td>
+                                <td>391,321</td>
+                                <td>1,321</td>
+                                <td data-toggle="modal" data-target="#m-detail1"><i class="iconfont">&#xe895;</i></td>
+                            </tr>
+                            <tr>
+                                <td>共利电梯网</td>
+                                <td>http://www.goodlift.net/</td>
+                                <td>KONE、通力、三荣、大通</td>
+                                <td>134,934</td>
+                                <td>1,934</td>
+                                <td data-toggle="modal" data-target="#m-detail1"><i class="iconfont">&#xe895;</i></td>
+                            </tr>
+                            <tr>
+                                <td>电梯网</td>
+                                <td>http://www.dianti.cn/index.html/</td>
+                                <td>KONE、通力、三荣、大通</td>
+                                <td>723,004</td>
+                                <td>2,032</td>
+                                <td data-toggle="modal" data-target="#m-detail1"><i class="iconfont">&#xe895;</i></td>
+                            </tr>
+                            <tr>
+                                <td>中国电梯信息港</td>
+                                <td>http://www.chinaelevator.org/</td>
+                                <td>KONE、通力、三荣、大通</td>
+                                <td>102,961</td>
+                                <td>1,961</td>
+                                <td data-toggle="modal" data-target="#m-detail1"><i class="iconfont">&#xe895;</i></td>
+                            </tr>
+                            <tr>
+                                <td>中国电梯资讯网</td>
+                                <td>http://www.cndt114.com/</td>
+                                <td>KONE、通力、三荣、大通</td>
+                                <td>2,492,094</td>
+                                <td>994</td>
+                                <td data-toggle="modal" data-target="#m-detail1"><i class="iconfont">&#xe895;</i></td>
+                            </tr>
+                            <tr>
+                                <td>电梯之家</td>
+                                <td>http://www.lifthome.net.cn/</td>
+                                <td>KONE、通力、三荣、大通</td>
+                                <td>419.801</td>
+                                <td>801</td>
+                                <td data-toggle="modal" data-target="#m-detail1"><i class="iconfont">&#xe895;</i></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<!-- Modal -->
+<div class="modal fade" id="m-detail1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">采集信息</h4>
+            </div>
+            <div class="modal-body">
+                <div class="basic-info form-horizontal">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 form-group ">
+                            <label class="col-xs-3 col-sm-6 col-md-4 col-lg-4 control-label">采集门户</label>
+                            <div class="col-xs-9 col-sm-6 col-md-8 col-lg-8">
+                                <input class="form-control" type="text" name="labName" value="中国电梯网">
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 form-group ">
+                            <label class="col-xs-3 col-sm-6 col-md-4 col-lg-4 control-label">地址</label>
+                            <div class="col-xs-9 col-sm-6 col-md-8 col-lg-8">
+                                <input class="form-control" type="text" name="labName" value="http://www.elevatorbuy.com/">
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 form-group ">
+                            <label class="col-xs-3 col-sm-6 col-md-4 col-lg-4 control-label">采集关键字</label>
+                            <div class="col-xs-9 col-sm-6 col-md-8 col-lg-8">
+                                <input class="form-control" type="text" name="labName" value="KONE、通力、三荣、大通">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <!--<button type="button" class="delete pull-left">删除</button>-->
+                <button type="button" data-dismiss="modal" class="save pull-right">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="">新增采集门户</h4>
+            </div>
+            <div class="modal-body">
+                <div class="basic-info form-horizontal">
+                    <div class="row">
+                        <div class="col-md-12 form-group">
+                            <label class="col-xs-3 col-sm-6 col-md-4 col-lg-4 control-label">采集门户</label>
+                            <div class="col-md-12">
+                                <input class="form-control" type="text" name="labName" value="">
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 form-group ">
+                            <label class="col-xs-3 col-sm-6 col-md-4 col-lg-4 control-label">地址</label>
+                            <div class="col-md-12">
+                                <input class="form-control" type="text" name="labName" value="">
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 form-group ">
+                            <label class="col-xs-3 col-sm-6 col-md-4 col-lg-4 control-label">采集关键字</label>
+                            <div class="col-md-12">
+                                <input class="form-control" type="text" name="labName" value="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="putInData" class="save pull-right">添加</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--mine-->
+<div class="modal fade" id="mine" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="">我的信息</h4>
+            </div>
+            <div class="modal-body">
+                <div class="basic-info form-horizontal">
+                    <ul id="myTab" class="nav nav-tabs">
+                        <li class="active"><a href="#pasw" data-toggle="tab">密码</a></li>
+                        <li><a href="#history" data-toggle="tab">历史记录</a></li>
+                        <li><a href="#lang" data-toggle="tab">系统语言</a></li>
+                    </ul>
+                    <div id="myTabContent" class="tab-content">
+                        <div class="tab-pane fade in active" id="pasw">
+                            <div class="row" style="padding-top: 20px;">
+                                <div class="col-xs-8 col-sm-8 form-group ">
+                                    <label class="col-xs-3 col-sm-6 col-md-4 control-label">新密码</label>
+                                    <div class="col-xs-9 col-sm-6 col-md-8 col-lg-8">
+                                        <input class="form-control" type="text" name="labName" id="">
+                                    </div>
+                                </div>
+                                <div class="col-xs-8 col-sm-8 form-group ">
+                                    <label class="col-xs-3 col-sm-6 col-md-4 control-label">确认密码</label>
+                                    <div class="col-xs-9 col-sm-6 col-md-8 col-lg-8">
+                                        <input class="form-control" type="text" name="labName" id="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="history">
+                            <div class="row">
+                                <div class="device-info">
+                                    <div class="table-responsive">
+                                        <table class="table">
+                                            <thead>
+                                            <tr>
+                                                <th>暂无记录</th>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="lang">
+                            <div class="row" style="margin-top:20px;">
+                                <div class="col-xs-12 col-md-6">
+                                    <select class="" name="place" id="language">
+                                        <option value="1">中文</option>
+                                        <option value="2">English</option>
+                                    </select>
+                                    <!--<script>-->
+                                    <!--$(document).ready(function () {-->
+                                    <!--$('#language').select2();-->
+                                    <!--});-->
+                                    <!--</script>-->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="save pull-left" onclick="window.location.href='login.html'">退出登录</button>
+                <button type="button" class="save pull-right">完成</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</div>
+</html>

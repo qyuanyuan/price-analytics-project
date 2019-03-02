@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Data Analytics Tool</title>
+    <link rel="shortcut icon" href="img/short.ico" type="image/x-icon">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/bootstrap-datepicker.min.css">
+    <link rel="stylesheet" href="css/icon.css">
+    <link rel="stylesheet" href="css/select2.min.css">
+    <link rel="stylesheet" href="css/labels/jqueryui.min.css">
+    <link rel="stylesheet" href="css/labels/jquery-ui-slider-pips.min.css">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/用户管理.css">
+    <script src="js/echarts.js"></script>
+    <script src="js/ecStat.js"></script>
+    <script src="js/jquery-3.2.1.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/bootstrap-datepicker.min.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/fakeJump.js"></script>
+    <script src="js/macarons.js"></script>
+
+
+    <!--<script src="js/labels/bower-libs.min.js"></script>-->
+
+
+</head>
+<body>
+
+<!-- top -->
+<div class="l-header hidden-xs">
+    <div class="l-user pull-right">
+        <div class="pull-left">销售管理</div>
+        <div class="pull-right icon">
+            <i class="iconfont" data-toggle="modal" data-target="#mine">&#xe6ec;</i>
+        </div>
+    </div>
+</div>
+
+<!-- mobile top -->
+<div class="container-fluid m-l-nav visible-xs">
+    <div class="row pabo">
+        <div class="logo-wrapper col-sm-12">
+            <div class="logo pull-left">
+                <span>Data Analytics Tool</span>
+            </div>
+            <div class="m-user pull-right">
+                <i class="nav-btn iconfont">&#xe656;</i>
+            </div>
+        </div>
+    </div>
+    <div class="m-nav-list">
+        <div class="m-nav-ul">
+            <div class="menuList">
+                <div class="sub_title">
+                    <i class="iconfont">&#xe6dc;</i>
+                    <span class="text">定价管理</span>
+                    <i class="iconfont drop_Arrow">&#xe65b;</i>
+                </div>
+                <ul class="sub_menu">
+                    <li style="text-align: center;"><span class="text">价格计算</span></li>
+                    <li style="text-align: center;"><span class="text">数据仓库</span></li>
+                    <li style="text-align: center;"><span class="text">暂存项目</span></li>
+                </ul>
+            </div>
+            <div class="menuList">
+                <i class="iconfont">&#xe764;</i>
+                <span class="text">销售管理</span>
+                <i class="iconfont drop_Arrow">&#xe65b;</i>
+            </div>
+            <div class="menuList">
+                <div class="sub_title">
+                    <i class="iconfont">&#xe606;</i>
+                    <span class="text" id="">市场环境</span>
+                    <i class="iconfont drop_Arrow">&#xe65b;</i>
+                </div>
+                <ul class="sub_menu">
+                    <li style="text-align: center;"><span class="text">数据引擎</span></li>
+                    <li style="text-align: center;"><span class="text">引擎仓库</span></li>
+                </ul>
+            </div>
+            <div class="menuList">
+                <i class="iconfont">&#xe61c;</i>
+                <span class="text">营销报告</span>
+                <i class="iconfont drop_Arrow">&#xe65b;</i>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 半透明层 -->
+<div class="m-nav-black"></div>
+<div class="page">
+    <!-- 左侧菜单aside -->
+    <div class="l-nav pull-left hidden-xs">
+        <div class="menu">
+            <img src="img/logo_en.png" class="logo_ud" alt="">
+            <!--<p>Data Analytics Tool</p>-->
+            <div class="l-nav-ul">
+                <div class="menuList">
+                    <div class="sub_title">
+                        <i class="iconfont">&#xe6dc;</i>
+                        <span class="text" id="sub_but">定价管理</span>
+                        <i class="iconfont drop_Arrow">&#xe65b;</i>
+                    </div>
+                    <ul class="sub_menu">
+                        <li style="text-align: center;"><span class="text">价格计算</span></li>
+                        <li style="text-align: center;"><span class="text">数据仓库</span></li>
+                        <li style="text-align: center;"><span class="text">暂存项目</span></li>
+                    </ul>
+                </div>
+                <div class="menuList">
+                    <i class="iconfont">&#xe764;</i>
+                    <span class="text">销售管理</span>
+                    <i class="iconfont drop_Arrow">&#xe65b;</i>
+                </div>
+                <div class="menuList">
+                    <div class="sub_title">
+                        <i class="iconfont">&#xe606;</i>
+                        <span class="text" id="sub_but2">市场环境</span>
+                        <i class="iconfont drop_Arrow">&#xe65b;</i>
+                    </div>
+                    <ul class="sub_menu">
+                        <li style="text-align: center;"><span class="text">数据引擎</span></li>
+                        <li style="text-align: center;"><span class="text">引擎仓库</span></li>
+                    </ul>
+                </div>
+                <div class="menuList">
+                    <i class="iconfont">&#xe61c;</i>
+                    <span class="text">营销报告</span>
+                    <i class="iconfont drop_Arrow">&#xe65b;</i>
+                </div>
+                <script>
+                    $(function () {
+                        $(".sub_title").click(function () {
+                            var jj = $(this).siblings(".sub_menu").css("display");
+                            if (jj == "none") {
+                                $(this).siblings(".sub_menu").slideDown(200);
+                                $(this).find(".drop_Arrow").html("&#xe626;");
+                            } else {
+                                $(this).siblings(".sub_menu").slideUp(200);
+                                $(this).find(".drop_Arrow").html("&#xe65b;");
+                            }
+
+                        })
+                    })
+                </script>
+            </div>
+        </div>
+    </div>
+
+    <!-- 右侧 数据 -->
+    <!-- 用户信息 -->
+    <div class="hideBar">
+        <!-- <div class="data pull-right" data-b="content-3"> -->
+        <div class="data pull-right">
+            <div class="lab-list">
+                <div class="lab-list-title">
+                    <div class="col-xs-12 col-md-12" style="border-bottom: 1px solid #f1f1f1;">
+                        <div class="checkbox pull-left">
+                            <label><input type="checkbox" checked>华东</label>
+                            <label><input type="checkbox" checked>华中</label>
+                            <label><input type="checkbox" checked>华南</label>
+                            <label><input type="checkbox" checked>华北</label>
+                        </div>
+                        <div class="pull-right">
+                            <input type="text" class="form-control dateIn" placeholder="结束日期">
+                            <script>
+                                $(function () {
+                                    $(".dateIn").datepicker({
+                                        format: 'yyyy 年 mm 月',
+                                        autoclose:true,
+                                        startView: 'months', //开始视图层，为月视图层
+                                        maxViewMode:'years', //最大视图层，为年视图层
+                                        minViewMode:'months' //最小视图层，为月视图层
+                                    });
+                                })
+                            </script>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-md-12">
+                        <div class="col-md-7 col-xs-12 left_pad">
+                            <div class="progressPart" style="border-bottom: 1px solid #f1f1f1">
+                                <p class="result_title">区域</p>
+                                <div class="progressArea">
+                                    <p>华东</p>
+                                    <div class="progress">
+                                        <div class="progress-bar progress-bar-success progress-bar-striped active" style="width: 70.2%">
+                                            <span>70.2% Completed</span>
+                                        </div>
+                                        <div class="progress-bar progress-bar-warning progress-bar-striped active" style="width: 20.6%">
+                                            <span>20.6% Forecast</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="progressArea">
+                                    <p>华中</p>
+                                    <div class="progress">
+                                        <div class="progress-bar progress-bar-success progress-bar-striped active" style="width: 61.3%">
+                                            <span>61.3% Completed</span>
+                                        </div>
+                                        <div class="progress-bar progress-bar-warning progress-bar-striped active" style="width: 12.6%">
+                                            <span>12.6% Forecast</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="progressArea">
+                                    <p>华南</p>
+                                    <div class="progress">
+                                        <div class="progress-bar progress-bar-success progress-bar-striped active" style="width: 69.4%">
+                                            <span>69.4% Completed</span>
+                                        </div>
+                                        <div class="progress-bar progress-bar-warning progress-bar-striped active" style="width: 12.1%">
+                                            <span>12.1% Forecast</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="progressArea">
+                                    <p>华北</p>
+                                    <div class="progress">
+                                        <div class="progress-bar progress-bar-success progress-bar-striped active" style="width: 70.4%">
+                                            <span>70.4% Completed</span>
+                                        </div>
+                                        <div class="progress-bar progress-bar-warning progress-bar-striped active" style="width: 20.6%">
+                                            <span>20.6% Forecast</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="progressPart">
+                                <p class="result_title">分公司</p>
+                                <div class="progressArea_half">
+                                    <p>分公司A</p>
+                                    <div class="progress">
+                                        <div class="progress-bar progress-bar-success progress-bar-striped active" style="width: 70.2%">
+                                            <span>70.2% Completed</span>
+                                        </div>
+                                        <div class="progress-bar progress-bar-warning progress-bar-striped active" style="width: 20.6%">
+                                            <span>20.6% Forecast</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="progressArea_half">
+                                    <p>分公司B</p>
+                                    <div class="progress">
+                                        <div class="progress-bar progress-bar-success progress-bar-striped active" style="width: 61.3%">
+                                            <span>61.3% Completed</span>
+                                        </div>
+                                        <div class="progress-bar progress-bar-warning progress-bar-striped active" style="width: 12.6%">
+                                            <span>12.6% Forecast</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="progressArea_half">
+                                    <p>分公司C</p>
+                                    <div class="progress">
+                                        <div class="progress-bar progress-bar-success progress-bar-striped active" style="width: 69.4%">
+                                            <span>69.4% Completed</span>
+                                        </div>
+                                        <div class="progress-bar progress-bar-warning progress-bar-striped active" style="width: 12.1%">
+                                            <span>12.1% Forecast</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="progressArea_half">
+                                    <p>分公司B</p>
+                                    <div class="progress">
+                                        <div class="progress-bar progress-bar-success progress-bar-striped active" style="width: 70.4%">
+                                            <span>70.4% Completed</span>
+                                        </div>
+                                        <div class="progress-bar progress-bar-warning progress-bar-striped active" style="width: 20.6%">
+                                            <span>20.6% Forecast</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-5 col-xs-12 nj_line">
+                            <table class="table_result table_bottom_line">
+                                <tr><td style="font-style: normal">基础信息</td><td>华东</td><td>0.3</td></tr>
+                                <tr><td></td><td>2018.3 ~ 2018.12</td><td>0.65</td></tr>
+                                <tr><td></td><td>标准</td><td>0.95</td></tr>
+                                <tr><td></td><td>参数A</td><td>0.3</td></tr>
+                                <tr><td></td><td>参数B</td><td>0.3</td></tr>
+                                <tr><td></td><td>参数C</td><td>0.3</td></tr>
+                                <tr><td></td><td>参数D</td><td>0.3</td></tr>
+                                <tr><td></td><td>参数E</td><td>0.3</td></tr>
+                                <tr><td></td><td>参数F</td><td>0.3</td></tr>
+                                <tr><td></td><td>参数G</td><td>0.3</td></tr>
+                            </table>
+                            <div>
+                                <div id="main" class="ec_m"></div>
+                                <script>
+                                    $(function () {
+                                        var myChart = echarts.init(document.getElementById('main'),"macarons");
+                                        var data = [
+                                            [96.24, 11.35],
+                                            [33.09, 85.11],
+                                            [57.60, 36.61],
+                                            [36.77, 27.26],
+                                            [20.10, 6.72],
+                                            [45.53, 36.37],
+                                            [110.07, 80.13],
+                                            [72.05, 20.88],
+                                            [39.82, 37.15],
+                                            [48.05, 70.50],
+                                            [0.85, 2.57],
+                                            [51.66, 63.70],
+                                            [61.07, 127.13],
+                                            [64.54, 33.59],
+                                            [35.50, 25.01],
+                                            [226.55, 664.02],
+                                            [188.60, 175.31],
+                                            [81.31, 108.68]
+                                        ];
+
+                                        var myRegression = ecStat.regression('polynomial', data, 3);
+
+                                        myRegression.points.sort(function(a, b) {
+                                            return a[0] - b[0];
+                                        });
+
+                                        option = {
+
+                                            tooltip: {
+                                                trigger: 'axis',
+                                                axisPointer: {
+                                                    type: 'cross'
+                                                }
+                                            },
+                                            title: {
+//                                                text: '18 companies net profit and main business income (million)',
+//                                                subtext: 'By ecStat.regression',
+//                                                sublink: 'https://github.com/ecomfe/echarts-stat',
+                                                left: 'center',
+                                                top: 0
+                                            },
+                                            xAxis: {
+                                                type: 'value',
+                                                splitLine: {
+                                                    lineStyle: {
+                                                        type: 'dashed'
+                                                    }
+                                                },
+                                                splitNumber: 20
+                                            },
+                                            yAxis: {
+                                                type: 'value',
+                                                min: -40,
+                                                splitLine: {
+                                                    lineStyle: {
+                                                        type: 'dashed'
+                                                    }
+                                                }
+                                            },
+                                            grid: {
+                                                top: 30
+                                            },
+                                            series: [{
+                                                name: 'scatter',
+                                                type: 'scatter',
+                                                label: {
+                                                    emphasis: {
+                                                        show: true,
+                                                        position: 'right',
+                                                        textStyle: {
+                                                            color: 'blue',
+                                                            fontSize: 16
+                                                        }
+                                                    }
+                                                },
+                                                data: data
+                                            }, {
+                                                name: 'line',
+                                                type: 'line',
+                                                smooth: true,
+                                                showSymbol: false,
+                                                data: myRegression.points,
+                                                markPoint: {
+                                                    itemStyle: {
+                                                        normal: {
+                                                            color: 'transparent'
+                                                        }
+                                                    },
+                                                    label: {
+                                                        normal: {
+                                                            show: true,
+                                                            position: 'left',
+                                                            formatter: myRegression.expression,
+                                                            textStyle: {
+                                                                color: '#333',
+                                                                fontSize: 14
+                                                            }
+                                                        }
+                                                    },
+                                                    data: [{
+                                                        coord: myRegression.points[myRegression.points.length - 1]
+                                                    }]
+                                                }
+                                            }]
+                                        };
+                                        myChart.setOption(option);
+                                    })
+                                </script>
+                            </div>
+                        </div>
+
+                        <div class="col-xs-12" style="margin-top:25px;margin-bottom: 80px;">
+                            <div class="col-xs-6" style="padding: 0">
+                                <li role="presentation" class="dropdown" style="list-style: none">
+                                    <a id="drop6" href="#" class="dropdown-toggle table_result_blue"  data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                        导出数据
+                                        <span class="caret"></span>
+                                    </a>
+                                    <ul id="menu3" class="dropdown-menu" aria-labelledby="drop6">
+                                        <li><a href="#">PDF</a></li>
+                                        <li><a href="#">Excel</a></li>
+                                        <li><a href="#">Word</a></li>
+                                    </ul>
+                                </li>
+                            </div>
+                            <div class="col-xs-6 col-md-3 pull-right">
+                                <div class="kone_d_but" >暂存</div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <!-- 用户信息 -->
+
+
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</body>
+<!-- Modal -->
+<div class="modal fade" id="m-detail1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">项目信息</h4>
+            </div>
+            <div class="modal-body">
+                <div class="basic-info form-horizontal">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-6 form-group ">
+                            <label class="col-xs-3 col-sm-6 col-md-4 col-lg-4 control-label">项目编号</label>
+                            <div class="col-xs-9 col-sm-6 col-md-8 col-lg-8">
+                                <input class="form-control" type="text" name="labName" value="01312903210" disabled>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 form-group ">
+                            <label class="col-xs-3 col-sm-6 col-md-4 col-lg-4 control-label">项目名称</label>
+                            <div class="col-xs-9 col-sm-6 col-md-8 col-lg-8">
+                                <input class="form-control" type="text" name="labName" value="上海某公司示例项目" disabled>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 form-group ">
+                            <label class="col-xs-3 col-sm-6 col-md-4 col-lg-4 control-label">项目金额(万元)</label>
+                            <div class="col-xs-9 col-sm-6 col-md-8 col-lg-8">
+                                <input class="form-control" type="text" name="labName" value="80" disabled>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 form-group ">
+                            <label class="col-xs-3 col-sm-6 col-md-4 col-lg-4 control-label">客户单位</label>
+                            <div class="col-xs-9 col-sm-6 col-md-8 col-lg-8">
+                                <input class="form-control" type="text" name="labName" value="上海某公司" disabled>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 form-group ">
+                            <label class="col-xs-3 col-sm-6 col-md-4 col-lg-4 control-label">区域</label>
+                            <div class="col-xs-9 col-sm-6 col-md-8 col-lg-8">
+                                <input class="form-control" type="text" name="labName" value="上海" disabled>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 form-group ">
+                            <label class="col-xs-3 col-sm-6 col-md-4 col-lg-4 control-label">签订日期</label>
+                            <div class="col-xs-9 col-sm-6 col-md-8 col-lg-8">
+                                <input class="form-control" type="text" name="labName" value="2018-06-10" disabled>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <!--<button type="button" class="delete pull-left">删除</button>-->
+                <button type="button" data-dismiss="modal" class="save pull-right">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="">数据导入</h4>
+            </div>
+            <div class="modal-body">
+                <div class="basic-info form-horizontal">
+                    <div class="row">
+                        <div class="col-md-12 form-group">
+                            <label class="col-xs-3 col-sm-6 col-md-4 col-lg-4 control-label">接口地址</label>
+                            <div class="col-md-12">
+                                <input class="form-control" type="text" name="labName"
+                                       value="http://kone.com/DataAnalyticsTool/test">
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 form-group ">
+                            <label class="col-xs-3 col-sm-6 col-md-4 col-lg-4 control-label">最近数据导入时间</label>
+                            <div class="col-md-12">
+                                <input class="form-control" disabled type="text" name="labName" value="2018-12-12">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="data_loading">
+                    <div class="data_ing">
+                        <img src="img/loadind.gif" alt="">
+                        <span>数据导入中,请稍候...</span>
+                    </div>
+                    <div class="data_done">
+                        <i class="iconfont" style="color: #00a651">&#xe63a;</i>
+                        <span>导入成功</span>
+                    </div>
+                </div>
+
+                <!--<button type="button" class="delete pull-left">删除</button>-->
+                <button type="button" id="putInData" class="save pull-right">导入</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--mine-->
+<div class="modal fade" id="mine" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="">我的信息</h4>
+            </div>
+            <div class="modal-body">
+                <div class="basic-info form-horizontal">
+                    <ul id="myTab" class="nav nav-tabs">
+                        <li class="active"><a href="#pasw" data-toggle="tab">密码</a></li>
+                        <li><a href="#history" data-toggle="tab">历史记录</a></li>
+                        <li><a href="#lang" data-toggle="tab">系统语言</a></li>
+                    </ul>
+                    <div id="myTabContent" class="tab-content">
+                        <div class="tab-pane fade in active" id="pasw">
+                            <div class="row" style="padding-top: 20px;">
+                                <div class="col-xs-8 col-sm-8 form-group ">
+                                    <label class="col-xs-3 col-sm-6 col-md-4 control-label">新密码</label>
+                                    <div class="col-xs-9 col-sm-6 col-md-8 col-lg-8">
+                                        <input class="form-control" type="text" name="labName" id="">
+                                    </div>
+                                </div>
+                                <div class="col-xs-8 col-sm-8 form-group ">
+                                    <label class="col-xs-3 col-sm-6 col-md-4 control-label">确认密码</label>
+                                    <div class="col-xs-9 col-sm-6 col-md-8 col-lg-8">
+                                        <input class="form-control" type="text" name="labName" id="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="history">
+                            <div class="row">
+                                <div class="device-info">
+                                    <div class="table-responsive">
+                                        <table class="table">
+                                            <thead>
+                                            <tr>
+                                                <th>暂无记录</th>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="lang">
+                            <div class="row" style="margin-top:20px;">
+                                <div class="col-xs-12 col-md-6">
+                                    <select class="" name="place" id="language">
+                                        <option value="1">中文</option>
+                                        <option value="2">English</option>
+                                    </select>
+                                    <!--<script>-->
+                                    <!--$(document).ready(function () {-->
+                                    <!--$('#language').select2();-->
+                                    <!--});-->
+                                    <!--</script>-->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="save pull-left" onclick="window.location.href='login.html'">退出登录</button>
+                <button type="button" class="save pull-right">完成</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</div>
+</html>

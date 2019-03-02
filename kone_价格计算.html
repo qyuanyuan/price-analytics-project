@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Data Analytics Tool</title>
+    <link rel="shortcut icon" href="img/short.ico" type="image/x-icon">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/icon.css">
+    <link rel="stylesheet" href="css/select2.min.css">
+    <link rel="stylesheet" href="css/labels/jqueryui.min.css">
+    <link rel="stylesheet" href="css/labels/jquery-ui-slider-pips.min.css">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/用户管理.css">
+    <!--<script src="js/echarts.js"></script>-->
+    <script src="js/jquery-3.2.1.js"></script>
+    <script src="js/labels/jquery-plus-ui.min.js"></script>
+    <script src="js/labels/jquery-ui-slider-pips.js"></script>
+    <script src="js/select2_cwx.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/bootstrap-datepicker.min.js"></script>
+    <script src="js/common.js"></script>
+
+
+    <script src="js/kone_slides.js"></script>
+    <script src="js/fakeJump.js"></script>
+    <!--<script src="js/cal_price.js"></script>-->
+    <script src="js/cal_price_mns.js"></script>
+
+
+
+
+</head>
+<body>
+<style>
+    select{
+        width: 100%;
+        text-align: left;
+    }
+    .content_kone .form-group {
+         text-align: left;
+     }
+    .select2-container .select2-selection--single .select2-selection__rendered{
+        padding-left:14px;
+    }
+</style>
+
+<!-- top -->
+<div class="l-header hidden-xs">
+    <div class="l-user pull-right">
+        <div class="pull-left">价格计算</div>
+        <div class="pull-right icon">
+            <i class="iconfont" data-toggle="modal" data-target="#mine">&#xe6ec;</i>
+        </div>
+    </div>
+</div>
+
+<!-- mobile top -->
+<div class="container-fluid m-l-nav visible-xs">
+    <div class="row pabo">
+        <div class="logo-wrapper col-sm-12">
+            <div class="logo pull-left">
+                <span>Data Analytics Tool</span>
+            </div>
+            <div class="m-user pull-right">
+                <i class="nav-btn iconfont">&#xe656;</i>
+            </div>
+        </div>
+    </div>
+    <div class="m-nav-list">
+        <div class="m-nav-ul">
+            <div class="menuList">
+                <div class="sub_title">
+                    <i class="iconfont">&#xe6dc;</i>
+                    <span class="text">定价管理</span>
+                    <i class="iconfont drop_Arrow">&#xe65b;</i>
+                </div>
+                <ul class="sub_menu">
+                    <li style="text-align: center;"><span class="text">价格计算</span></li>
+                    <li style="text-align: center;"><span class="text">数据仓库</span></li>
+                    <li style="text-align: center;"><span class="text">暂存项目</span></li>
+                </ul>
+            </div>
+            <div class="menuList">
+                <i class="iconfont">&#xe764;</i>
+                <span class="text">销售管理</span>
+                <i class="iconfont drop_Arrow">&#xe65b;</i>
+            </div>
+            <div class="menuList">
+                <div class="sub_title">
+                    <i class="iconfont">&#xe606;</i>
+                    <span class="text" id="">市场环境</span>
+                    <i class="iconfont drop_Arrow">&#xe65b;</i>
+                </div>
+                <ul class="sub_menu">
+                    <li style="text-align: center;"><span class="text">数据引擎</span></li>
+                    <li style="text-align: center;"><span class="text">引擎仓库</span></li>
+                </ul>
+            </div>
+            <div class="menuList">
+                <i class="iconfont">&#xe61c;</i>
+                <span class="text">营销报告</span>
+                <i class="iconfont drop_Arrow">&#xe65b;</i>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 半透明层 -->
+<div class="m-nav-black"></div>
+<div class="page">
+    <!-- 左侧菜单aside -->
+    <div class="l-nav pull-left hidden-xs">
+        <div class="menu">
+            <img src="img/logo_en.png" class="logo_ud" alt="">
+            <!--<p>Data Analytics Tool</p>-->
+            <div class="l-nav-ul">
+                <div class="menuList">
+                    <div class="sub_title">
+                        <i class="iconfont">&#xe6dc;</i>
+                        <span class="text" id="sub_but">定价管理</span>
+                        <i class="iconfont drop_Arrow">&#xe65b;</i>
+                    </div>
+                    <ul class="sub_menu">
+                        <li style="text-align: center;"><span class="text">价格计算</span></li>
+                        <li style="text-align: center;"><span class="text">数据仓库</span></li>
+                        <li style="text-align: center;"><span class="text">暂存项目</span></li>
+                    </ul>
+                </div>
+                <div class="menuList">
+                    <i class="iconfont">&#xe764;</i>
+                    <span class="text">销售管理</span>
+                    <i class="iconfont drop_Arrow">&#xe65b;</i>
+                </div>
+                <div class="menuList">
+                    <div class="sub_title">
+                        <i class="iconfont">&#xe606;</i>
+                        <span class="text" id="sub_but2">市场环境</span>
+                        <i class="iconfont drop_Arrow">&#xe65b;</i>
+                    </div>
+                    <ul class="sub_menu">
+                        <li style="text-align: center;"><span class="text">数据引擎</span></li>
+                        <li style="text-align: center;"><span class="text">引擎仓库</span></li>
+                    </ul>
+                </div>
+                <div class="menuList">
+                    <i class="iconfont">&#xe61c;</i>
+                    <span class="text">营销报告</span>
+                    <i class="iconfont drop_Arrow">&#xe65b;</i>
+                </div>
+                <script>
+                    $(function () {
+                        $(".sub_title").click(function () {
+                            var jj = $(this).siblings(".sub_menu").css("display");
+                            if (jj == "none") {
+                                $(this).siblings(".sub_menu").slideDown(200);
+                                $(this).find(".drop_Arrow").html("&#xe626;");
+                            } else {
+                                $(this).siblings(".sub_menu").slideUp(200);
+                                $(this).find(".drop_Arrow").html("&#xe65b;");
+                            }
+
+                        })
+                    })
+                </script>
+            </div>
+        </div>
+    </div>
+
+    <!-- 右侧 数据 -->
+    <!-- 用户信息 -->
+    <div class="hideBar">
+        <!-- <div class="data pull-right" data-b="content-3"> -->
+        <div class="data pull-right">
+            <div class="lab-list">
+                <div class="lab-list-title">
+                    <div class="col-xs-12 col-md-6" style="border-right: 1px solid #f1f1f1;">
+                        <div>
+                            <!-- Nav tabs -->
+                            <ul class="nav nav-tabs" role="tablist">
+                                <li role="presentation" class="active">
+                                    <a href="#base" aria-controls="base" role="tab" data-toggle="tab">基础信息</a>
+                                </li>
+                                <li role="presentation">
+                                    <a href="#more" aria-controls="more" role="tab" data-toggle="tab">项目特性</a>
+                                </li>
+                            </ul>
+
+                            <!-- Tab panes -->
+                            <div class="tab-content">
+                                <div role="tabpanel" class="tab-pane active" id="base">
+                                    <div class="col-xs-12 content_kone">
+                                        <div class="col-xs-12 col-sm-12 form-group ">
+                                            <label class="col-xs-4 control-label">项目编号</label>
+                                            <div class="col-xs-8">
+                                                <input class="form-control" type="text" name="labName"
+                                                       value="01312903210">
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-12 form-group ">
+                                            <label class="col-xs-4 control-label">项目名称</label>
+                                            <div class="col-xs-8">
+                                                <input class="form-control" type="text" name="labName"
+                                                       value="上海某公司示例项目">
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-12 form-group ">
+                                            <label class="col-xs-4 control-label">客户单位</label>
+                                            <div class="col-xs-8">
+                                                <input class="form-control" type="text" name="labName" value="上海某公司">
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-12 form-group ">
+                                            <label class="col-xs-4 control-label">区域</label>
+                                            <div class="col-xs-8">
+                                                <select class="_s2" name="" id="area">
+                                                    <option value="">华东</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-12 form-group ">
+                                            <label class="col-xs-4 control-label">产品规格</label>
+                                            <div class="col-xs-8">
+                                                <select class="_s2 valuable" name="" id="typeId">
+                                                    <!--cwx-->
+                                                    <!--<option value="PT10/18">PT10/18</option>-->
+                                                    <!--<option value="PT13/16">PT13/16</option>-->
+                                                    <!--<option value="PT13/18">PT13/18</option>-->
+                                                    <!--<option value="PT13/20">PT13/20</option>-->
+                                                    <!--mns-->
+                                                    <!--<option value="38072.455194068854">PT13/20</option>-->
+                                                    <!--<option value="22597.681532157403">PT13/18</option>-->
+                                                    <!--<option value="21541.183750886936">PT13/16</option>-->
+                                                    <!--<option value="-17899.636700604846">PT10/18</option>-->
+                                                    <!--7-->
+                                                    <option value="5482.11609163055">PW10/18</option>
+                                                    <option value="597.852720535891">PT13/20</option>
+                                                    <option value="063.789450134487">PW10/10</option>
+                                                    <option value="9971.996220163996">PT13/18</option>
+                                                    <option value="4897.26927071026">PW13/10</option>
+                                                    <option value="4235.79071478757">PW13/16</option>
+                                                    <option value="5559.080070833974">PW13/18</option>
+
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-12 form-group ">
+                                            <label class="col-xs-4 control-label">分公司</label>
+                                            <div class="col-xs-8">
+                                                <select class="_s2 valuable" name="" id="company">
+                                                    <!--cwx-->
+                                                    <!--<option value="1">杭州</option>-->
+                                                    <!--<option value="2">嘉兴</option>-->
+                                                    <!--<option value="3">金华</option>-->
+                                                    <!--<option value="4">南昌</option>-->
+                                                    <!--<option value="5">宁波</option>-->
+                                                    <!--<option value="6">温州</option>-->
+                                                    <!--mns-->
+                                                    <!--<option value="452.9343390433984">杭州</option>-->
+                                                    <!--<option value="21998.290251587547">温州</option>-->
+                                                    <!--<option value="-9645.02552468067">宁波</option>-->
+                                                    <!--<option value="1264.4003569895335">南昌</option>-->
+                                                    <!--<option value="34504.20459429051">金华</option>-->
+                                                    <!--<option value="15738.879759977704">嘉兴</option>-->
+                                                    <!--7-->
+                                                    <option value="33447.62950499263">温州</option>
+                                                    <option value="13753.94212737162">宁波</option>
+                                                    <option value="17881.0343189963">南昌</option>
+                                                    <option value="33769.38529603056">金华</option>
+                                                    <option value="2354.797319903628">嘉兴</option>
+                                                    <option value="5656.113531179332">杭州</option>
+
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-12 form-group ">
+                                            <label class="col-xs-4 control-label">建筑性质</label>
+                                            <div class="col-xs-8">
+                                                <select class="_s2 valuable" name="" id="building">
+                                                    <!--cwx-->
+                                                    <!--<option value="1">办公楼</option>-->
+                                                    <!--<option value="2">保障性住房</option>-->
+                                                    <!--<option value="3">工厂工业</option>-->
+                                                    <!--<option value="4">公共交通</option>-->
+                                                    <!--<option value="5">酒店</option>-->
+                                                    <!--<option value="6">商场</option>-->
+                                                    <!--<option value="7">私人别墅</option>-->
+                                                    <!--<option value="8">学校和娱乐设施</option>-->
+                                                    <!--<option value="9">医院</option>-->
+                                                    <!--<option value="10">住宅楼</option>-->
+                                                    <!--<option value="11">综合楼</option>-->
+                                                    <!--mns-->
+                                                    <!--<option value="9816.764220008063">商场</option>-->
+                                                    <!--<option value="1.0">私人别墅</option>-->
+                                                    <!--<option value="1704.3350931875445">综合楼</option>-->
+                                                    <!--<option value="1.0">酒店</option>-->
+                                                    <!--<option value="25718.07479044655">住宅楼</option>-->
+                                                    <!--<option value="1.0">学校和娱乐设施</option>-->
+                                                    <!--<option value="27072.509672948105">办公楼</option>-->
+                                                    <!--<option value="1.0">医院</option>-->
+                                                    <!--<option value="1.0">保障性住房</option>-->
+                                                    <!--<option value="1.0">公共交通</option>-->
+                                                    <!--<option value="1.0">工厂工业</option>-->
+                                                    <!--7-->
+                                                    <option value="19292.68023651632">商场</option>
+                                                    <option value="14886.3316293236">私人别墅</option>
+                                                    <option value="7118.884826299589">综合楼</option>
+                                                    <option value="30420.863987533197">酒店</option>
+                                                    <option value="19312.11640215019">住宅楼</option>
+                                                    <option value="30649.085113200963">学校和娱乐设施</option>
+                                                    <option value="15197.337190904225">办公楼</option>
+                                                    <option value="1.0">医院</option>
+                                                    <option value="1.0">保障性住房</option>
+                                                    <option value="1.0">公共交通</option>
+                                                    <option value="-30012.39728745927">工厂工业</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-12 form-group ">
+                                            <label class="col-xs-4 control-label">产品平台</label>
+                                            <div class="col-xs-8">
+                                                <select class="_s2 valuable" name="" id="platform">
+                                                    <!--cwx-->
+                                                    <!--<option value="1">Emini</option>-->
+                                                    <!--<option value="2">Emono</option>-->
+                                                    <!--<option value="3">Mini</option>-->
+                                                    <!--<option value="4">Mono Home Lift</option>-->
+                                                    <!--<option value="5">Nmini</option>-->
+                                                    <!--<option value="6">Nmini R</option>-->
+                                                    <!--<option value="7">Nmono</option>-->
+                                                    <!--<option value="8">Other</option>-->
+                                                    <!--<option value="9">Other-TM110</option>-->
+                                                    <!--<option value="10">Other-TM115</option>-->
+                                                    <!--<option value="11">Smini</option>-->
+                                                    <!--<option value="12">Smono</option>-->
+                                                    <!--<option value="13">TM110S</option>-->
+                                                    <!--<option value="14">Transys</option>-->
+                                                    <!--<option value="15">Zmini</option>-->
+                                                    <!--<option value="16">餐梯或杂物梯</option>-->
+                                                    <!--mns-->
+                                                    <!--<option value="-10392.375144611327">Zmini</option>-->
+                                                    <!--<option value="1.0">Transys</option>-->
+                                                    <!--<option value="1.0">TM110s</option>-->
+                                                    <!--<option value="1.0">Smono</option>-->
+                                                    <!--<option value="1.0">Smini</option>-->
+                                                    <!--<option value="1.0">Other-TM115</option>-->
+                                                    <!--<option value="1.0">Other-TM110</option>-->
+                                                    <!--<option value="1.0">Other</option>-->
+                                                    <!--<option value="1.0">Nmono</option>-->
+                                                    <!--<option value="31924.226978972412">Nmini R</option>-->
+                                                    <!--<option value="70512.65713911747">Nmini</option>-->
+                                                    <!--<option value="1.0">Mono Home Lift</option>-->
+                                                    <!--<option value="1.0">Mini</option>-->
+                                                    <!--<option value="1.0">Emono</option>-->
+                                                    <!--<option value="-27732.82519704199">Emini</option>-->
+                                                    <!--<option value="1.0">餐梯或杂货梯</option>-->
+                                                    <!--7-->
+                                                    <option value="1.0">餐梯或杂货梯</option>
+                                                    <option value="-32228.042904569735">Zmini</option>
+                                                    <option value="1.0">Transys</option>
+                                                    <option value="1.0">TM110s</option>
+                                                    <option value="129041.64693551914">Smono</option>
+                                                    <option value="1.0">Smini</option>
+                                                    <option value="1.0">Other-TM115</option>
+                                                    <option value="1.0">Other-TM110</option>
+                                                    <option value="1.0">Other</option>
+                                                    <option value="15757.595847491244">Nmono</option>
+                                                    <option value="15224.138974148993">Nmini R</option>
+                                                    <option value="54359.61037999974">Nmini</option>
+                                                    <option value="1.0">Mono Home Lift</option>
+                                                    <option value="1.0">Mini</option>
+                                                    <option value="-36563.197184912366">Emono</option>
+                                                    <option value="-38727.849949209165">Emini</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-12 form-group ">
+                                            <label class="col-xs-4 control-label">TTC / SEC</label>
+                                            <div class="col-xs-8">
+                                                <select class="_s2 valuable" name="" id="TTC">
+                                                    <!--cwx-->
+                                                    <!--<option value="2">TTC</option>-->
+                                                    <!--<option value="1">SEC</option>-->
+                                                    <!--<option value="22522.831427753797">SEC</option>-->
+                                                    <!--<option value="41786.852348845976">TTC</option>-->
+                                                    <!--7-->
+                                                    <option value="44393.17225144053">SEC</option>
+                                                    <option value="62465.72984702833">TTC</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-12 form-group ">
+                                            <label class="col-xs-4 control-label">层站</label>
+                                            <div class="col-xs-8">
+                                                <input class="form-control valuable" placeholder="reference: 2 ~ 40" id="floor" type="number"
+                                                       name="labName" value="">
+                                            </div>
+                                        </div>
+                                        <!--mns-->
+                                        <div class="col-xs-12 col-sm-12 form-group ">
+                                            <label class="col-xs-4 control-label">台量</label>
+                                            <div class="col-xs-8">
+                                                <input class="form-control valuable" placeholder="reference: > 0" id="sum" type="number"
+                                                       name="labName" value="">
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-12 form-group ">
+                                            <label class="col-xs-4 control-label">折扣</label>
+                                            <div class="col-xs-8">
+                                                <input class="form-control valuable" placeholder="reference: - 50" id="discount" type="number"
+                                                       name="labName" value="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div role="tabpanel" class="tab-pane fade" id="more">
+                                    <div class="col-xs-12 content_kone">
+                                        <div class="sliderOne">
+                                            <div class="col-xs-4">标的类型</div>
+                                            <div class="col-xs-8">
+                                                <div class="slider" id="标的类型"></div>
+                                            </div>
+                                        </div>
+                                        <div class="sliderOne">
+                                            <div class="col-xs-4">项目定位</div>
+                                            <div class="col-xs-8">
+                                                <div class="slider" id="项目定位"></div>
+                                            </div>
+                                        </div>
+                                        <div class="sliderOne">
+                                            <div class="col-xs-4">代理商级别</div>
+                                            <div class="col-xs-8">
+                                                <div class="slider" id="代理商级别"></div>
+                                            </div>
+                                        </div>
+                                        <div class="sliderOne">
+                                            <div class="col-xs-4">商务条款优劣</div>
+                                            <div class="col-xs-8">
+                                                <div class="slider" id="商务条款优劣"></div>
+                                            </div>
+                                        </div>
+                                        <div class="sliderOne">
+                                            <div class="col-xs-4">是否有主推功能</div>
+                                            <div class="col-xs-8">
+                                                <div class="slider" id="是否有主推功能"></div>
+                                            </div>
+                                        </div>
+                                        <div class="sliderOne">
+                                            <div class="col-xs-4">当地品牌认可度</div>
+                                            <div class="col-xs-8">
+                                                <div class="slider" id="当地品牌认可度"></div>
+                                            </div>
+                                        </div>
+                                        <div class="sliderOne">
+                                            <div class="col-xs-4">与项目关键人关系</div>
+                                            <div class="col-xs-8">
+                                                <div class="slider" id="与项目关键人关系"></div>
+                                            </div>
+                                        </div>
+                                        <div class="sliderOne">
+                                            <div class="col-xs-4">项目进度</div>
+                                            <div class="col-xs-8">
+                                                <div class="slider" id="项目进度"></div>
+                                            </div>
+                                        </div>
+                                        <div class="sliderOne">
+                                            <div class="col-xs-4">转签率</div>
+                                            <div class="col-xs-8">
+                                                <div class="slider" id="转签率"></div>
+                                            </div>
+                                        </div>
+                                        <div class="sliderOne">
+                                            <div class="col-xs-4">KONE竞争力</div>
+                                            <div class="col-xs-8">
+                                                <div class="slider" id="KONE竞争力"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-md-6">
+                        <p class="result_title">参考价格计算</p>
+                        <table class="table_result">
+                            <tr>
+                                <td style="font-style: normal">基础信息</td>
+                                <td>区域</td>
+                                <td>华东</td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>产品规格</td>
+                                <td data-res="typeId">~</td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>分公司</td>
+                                <td data-res="company">~</td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>建筑性质</td>
+                                <td data-res="building">~</td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>产品平台</td>
+                                <td data-res="platform">~</td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>TTC / SEC</td>
+                                <td data-res="TTC">~</td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>层站</td>
+                                <td data-res="floor">~</td>
+                            </tr>
+                            <!--mns-->
+                            <tr>
+                                <td></td>
+                                <td>台量</td>
+                                <td data-res="sum">~</td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>折扣</td>
+                                <td data-res="discount">~</td>
+                            </tr>
+                            <tr class="table_result_line">
+                                <td style="font-style: normal">项目特性</td>
+                                <td>标的类型</td>
+                                <td data-res="_a">~</td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>项目定位</td>
+                                <td data-res="_b">~</td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>代理商级别</td>
+                                <td data-res="_c">~</td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>商务条款优劣</td>
+                                <td data-res="_d">~</td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>是否有主推功能</td>
+                                <td data-res="_e">~</td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>当地品牌认可度</td>
+                                <td data-res="_f">~</td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>与项目关键人关系</td>
+                                <td data-res="_g">~</td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>项目进度</td>
+                                <td data-res="_h">~</td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>转签率</td>
+                                <td data-res="_i">~</td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>KONE竞争力</td>
+                                <td data-res="_j">~</td>
+                            </tr>
+                            <tr class="table_result_line table_result_blue">
+                                <td style="font-style: normal">参考价格</td>
+                                <td></td>
+                                <td data-res="res">~</td>
+                            </tr>
+                        </table>
+                        <div class="col-xs-12" style="margin-top:25px;margin-bottom: 80px;">
+                            <div class="col-xs-6" style="padding: 0">
+                                <li role="presentation" class="dropdown" style="list-style: none">
+                                    <a id="drop6" href="#" class="dropdown-toggle table_result_blue"
+                                       data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                        导出数据
+                                        <span class="caret"></span>
+                                    </a>
+                                    <ul id="menu3" class="dropdown-menu" aria-labelledby="drop6">
+                                        <li><a href="#">PDF</a></li>
+                                        <li><a href="#">Excel</a></li>
+                                        <li><a href="#">Word</a></li>
+                                    </ul>
+                                </li>
+                            </div>
+                            <div class="col-xs-6 col-md-3 pull-right">
+                                <div class="kone_d_but">暂存</div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <!-- 用户信息 -->
+
+
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</body>
+<!-- Modal -->
+<div class="modal fade" id="m-detail1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">项目信息</h4>
+            </div>
+            <div class="modal-body">
+                <div class="basic-info form-horizontal">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-6 form-group ">
+                            <label class="col-xs-3 col-sm-6 col-md-4 col-lg-4 control-label">项目编号</label>
+                            <div class="col-xs-9 col-sm-6 col-md-8 col-lg-8">
+                                <input class="form-control" type="text" name="labName" value="01312903210" disabled>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 form-group ">
+                            <label class="col-xs-3 col-sm-6 col-md-4 col-lg-4 control-label">项目名称</label>
+                            <div class="col-xs-9 col-sm-6 col-md-8 col-lg-8">
+                                <input class="form-control" type="text" name="labName" value="上海某公司示例项目" disabled>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 form-group ">
+                            <label class="col-xs-3 col-sm-6 col-md-4 col-lg-4 control-label">项目金额(万元)</label>
+                            <div class="col-xs-9 col-sm-6 col-md-8 col-lg-8">
+                                <input class="form-control" type="text" name="labName" value="80" disabled>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 form-group ">
+                            <label class="col-xs-3 col-sm-6 col-md-4 col-lg-4 control-label">客户单位</label>
+                            <div class="col-xs-9 col-sm-6 col-md-8 col-lg-8">
+                                <input class="form-control" type="text" name="labName" value="上海某公司" disabled>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 form-group ">
+                            <label class="col-xs-3 col-sm-6 col-md-4 col-lg-4 control-label">区域</label>
+                            <div class="col-xs-9 col-sm-6 col-md-8 col-lg-8">
+                                <input class="form-control" type="text" name="labName" value="上海" disabled>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 form-group ">
+                            <label class="col-xs-3 col-sm-6 col-md-4 col-lg-4 control-label">签订日期</label>
+                            <div class="col-xs-9 col-sm-6 col-md-8 col-lg-8">
+                                <input class="form-control" type="text" name="labName" value="2018-06-10" disabled>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <!--<button type="button" class="delete pull-left">删除</button>-->
+                <button type="button" data-dismiss="modal" class="save pull-right">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="">数据导入</h4>
+            </div>
+            <div class="modal-body">
+                <div class="basic-info form-horizontal">
+                    <div class="row">
+                        <div class="col-md-12 form-group">
+                            <label class="col-xs-3 col-sm-6 col-md-4 col-lg-4 control-label">接口地址</label>
+                            <div class="col-md-12">
+                                <input class="form-control" type="text" name="labName"
+                                       value="http://kone.com/DataAnalyticsTool/test">
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 form-group ">
+                            <label class="col-xs-3 col-sm-6 col-md-4 col-lg-4 control-label">最近数据导入时间</label>
+                            <div class="col-md-12">
+                                <input class="form-control" disabled type="text" name="labName" value="2018-12-12">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="data_loading">
+                    <div class="data_ing">
+                        <img src="img/loadind.gif" alt="">
+                        <span>数据导入中,请稍候...</span>
+                    </div>
+                    <div class="data_done">
+                        <i class="iconfont" style="color: #00a651">&#xe63a;</i>
+                        <span>导入成功</span>
+                    </div>
+                </div>
+
+                <!--<button type="button" class="delete pull-left">删除</button>-->
+                <button type="button" id="putInData" class="save pull-right">导入</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--mine-->
+<div class="modal fade" id="mine" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="">我的信息</h4>
+            </div>
+            <div class="modal-body">
+                <div class="basic-info form-horizontal">
+                    <ul id="myTab" class="nav nav-tabs">
+                        <li class="active"><a href="#pasw" data-toggle="tab">密码</a></li>
+                        <li><a href="#history" data-toggle="tab">历史记录</a></li>
+                        <li><a href="#lang" data-toggle="tab">系统语言</a></li>
+                    </ul>
+                    <div id="myTabContent" class="tab-content">
+                        <div class="tab-pane fade in active" id="pasw">
+                            <div class="row" style="padding-top: 20px;">
+                                <div class="col-xs-8 col-sm-8 form-group ">
+                                    <label class="col-xs-3 col-sm-6 col-md-4 control-label">新密码</label>
+                                    <div class="col-xs-9 col-sm-6 col-md-8 col-lg-8">
+                                        <input class="form-control" type="text" name="labName" id="">
+                                    </div>
+                                </div>
+                                <div class="col-xs-8 col-sm-8 form-group ">
+                                    <label class="col-xs-3 col-sm-6 col-md-4 control-label">确认密码</label>
+                                    <div class="col-xs-9 col-sm-6 col-md-8 col-lg-8">
+                                        <input class="form-control" type="text" name="labName" id="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="history">
+                            <div class="row">
+                                <div class="device-info">
+                                    <div class="table-responsive">
+                                        <table class="table">
+                                            <thead>
+                                            <tr>
+                                                <th>暂无记录</th>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="lang">
+                            <div class="row" style="margin-top:20px;">
+                                <div class="col-xs-12 col-md-6">
+                                    <select class="" name="place" id="language">
+                                        <option value="1">中文</option>
+                                        <option value="2">English</option>
+                                    </select>
+                                    <!--<script>-->
+                                        <!--$(document).ready(function () {-->
+                                            <!--$('#language').select2();-->
+                                        <!--});-->
+                                    <!--</script>-->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="save pull-left" onclick="window.location.href='login.html'">退出登录</button>
+                <button type="button" class="save pull-right">完成</button>
+            </div>
+        </div>
+    </div>
+</div>
+</html>

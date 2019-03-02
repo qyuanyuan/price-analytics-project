@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Data Analytics Tool</title>
+    <link rel="shortcut icon" href="img/short.ico" type="image/x-icon">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/icon.css">
+    <link rel="stylesheet" href="css/select2.min.css">
+    <link rel="stylesheet" href="css/common.css">
+
+    <link rel="stylesheet" href="css/用户管理.css">
+    <link rel="stylesheet" href="css/fullCalendar_cwx.css">
+
+    <script src="js/echarts.js"></script>
+    <script src="js/jquery-3.2.1.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/bootstrap-datepicker.min.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/select2_cwx.js"></script>
+    <script src="js/kone.js"></script>
+    <script src="js/fakeJump.js"></script>
+
+
+
+</head>
+<body>
+
+    <!-- top -->
+    <div class="l-header hidden-xs">
+        <div class="l-user pull-right">
+            <div class="pull-left">数据仓库<i class="iconfont kone_add" data-toggle="modal" data-target="#myModal">&#xe650;</i></div>
+            <div class="pull-right icon">
+                <i class="iconfont"  data-toggle="modal" data-target="#mine">&#xe6ec;</i>
+            </div>
+        </div>
+    </div>
+
+    <!-- mobile top -->
+    <div class="container-fluid m-l-nav visible-xs">
+        <div class="row pabo">
+            <div class="logo-wrapper col-sm-12">
+                <div class="logo pull-left">
+                    <span>Data Analytics Tool</span>
+                </div>
+                <div class="m-user pull-right">
+                    <i class="nav-btn iconfont">&#xe656;</i>
+                </div>
+            </div>
+        </div>
+        <div class="m-nav-list">
+            <div class="m-nav-ul">
+                <div class="menuList">
+                    <div class="sub_title">
+                        <i class="iconfont">&#xe6dc;</i>
+                        <span class="text" id="">定价管理</span>
+                        <i class="iconfont drop_Arrow">&#xe65b;</i>
+                    </div>
+                    <ul class="sub_menu">
+                        <li style="text-align: center;"><span class="text">价格计算</span></li>
+                        <li style="text-align: center;"><span class="text">数据仓库</span></li>
+                        <li style="text-align: center;"><span class="text">暂存项目</span></li>
+                    </ul>
+                </div>
+                <div class="menuList">
+                    <i class="iconfont">&#xe764;</i>
+                    <span class="text">销售管理</span>
+                    <i class="iconfont drop_Arrow">&#xe65b;</i>
+                </div>
+                <div class="menuList">
+                    <div class="sub_title">
+                        <i class="iconfont">&#xe606;</i>
+                        <span class="text" id="sub_but2">市场环境</span>
+                        <i class="iconfont drop_Arrow">&#xe65b;</i>
+                    </div>
+                    <ul class="sub_menu">
+                        <li style="text-align: center;"><span class="text">数据引擎</span></li>
+                        <li style="text-align: center;"><span class="text">引擎仓库</span></li>
+                    </ul>
+                </div>
+                <div class="menuList">
+                    <i class="iconfont">&#xe61c;</i>
+                    <span class="text">营销报告</span>
+                    <i class="iconfont drop_Arrow">&#xe65b;</i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 半透明层 -->
+    <div class="m-nav-black"></div>
+    <div class="page">
+        <!-- 左侧菜单aside -->
+        <div class="l-nav pull-left hidden-xs">
+            <div class="menu">
+                <img src="img/logo_en.png" class="logo_ud" alt="">
+                <!--<p>Data Analytics Tool</p>-->
+                <div class="l-nav-ul">
+                    <div class="menuList">
+                        <div class="sub_title">
+                            <i class="iconfont">&#xe6dc;</i>
+                            <span class="text" id="sub_but">定价管理</span>
+                            <i class="iconfont drop_Arrow">&#xe65b;</i>
+                        </div>
+                        <ul class="sub_menu">
+                            <li style="text-align: center;"><span class="text">价格计算</span></li>
+                            <li style="text-align: center;"><span class="text">数据仓库</span></li>
+                            <li style="text-align: center;"><span class="text">暂存项目</span></li>
+                        </ul>
+                    </div>
+                    <div class="menuList">
+                        <i class="iconfont">&#xe764;</i>
+                        <span class="text">销售管理</span>
+                        <i class="iconfont drop_Arrow">&#xe65b;</i>
+                    </div>
+                    <div class="menuList">
+                        <div class="sub_title">
+                            <i class="iconfont">&#xe606;</i>
+                            <span class="text">市场环境</span>
+                            <i class="iconfont drop_Arrow">&#xe65b;</i>
+                        </div>
+                        <ul class="sub_menu">
+                            <li style="text-align: center;"><span class="text">数据引擎</span></li>
+                            <li style="text-align: center;"><span class="text">引擎仓库</span></li>
+                        </ul>
+                    </div>
+                    <div class="menuList">
+                        <i class="iconfont">&#xe61c;</i>
+                        <span class="text">营销报告</span>
+                        <i class="iconfont drop_Arrow">&#xe65b;</i>
+                    </div>
+                    <script>
+                        $(function () {
+                            $(".sub_title").click(function () {
+                                var jj = $(this).siblings(".sub_menu").css("display");
+                                if (jj == "none") {
+                                    $(this).siblings(".sub_menu").slideDown(200);
+                                    $(this).find(".drop_Arrow").html("&#xe626;");
+                                }else {
+                                    $(this).siblings(".sub_menu").slideUp(200);
+                                    $(this).find(".drop_Arrow").html("&#xe65b;");
+                                }
+
+                            })
+                        })
+                    </script>
+                </div>
+            </div>
+        </div>
+
+        <!-- 右侧 数据 -->
+        <!-- 用户信息 -->
+        <div class="hideBar">
+            <!-- <div class="data pull-right" data-b="content-3"> -->
+            <div class="data pull-right">
+                <div class="lab-list">
+                    <div class="lab-list-title" style="padding-top: 30px;">
+                        <div class="col-md-10 pad0">
+                            <div class="col-md-4 form-group kone_input_area">
+                                <label for="">项目编号</label>
+                                <input type="text" class="form-control">
+                            </div>
+                            <div class="col-md-4 form-group kone_input_area">
+                                <label for="">项目名称</label>
+                                <input type="text" class="form-control">
+                            </div>
+                            <div class="col-md-4 form-group kone_input_area">
+                                <label for="">客户单位</label>
+                                <input type="text" class="form-control">
+                            </div>
+                            <div class="col-md-4 form-group kone_input_area">
+                                <label for="">区域</label>
+                                <!--<input type="text" class="form-control">-->
+                                <select class="form-control se2Area" >
+                                    <option value="上海">上海</option>
+                                    <optgroup label="北方">
+                                        <option value="北京">北京</option>
+                                        <option value="石家庄">石家庄</option>
+                                        <option value="天津">天津</option>
+                                        <option value="山西">山西</option>
+                                    </optgroup>
+                                    <optgroup label="华东">
+                                        <option value="杭州">杭州</option>
+                                        <option value="宁波">宁波</option>
+                                        <option value="嘉兴">嘉兴</option>
+                                        <option value="温州">温州</option>
+                                        <option value="金华">金华</option>
+                                        <option value="南昌">南昌</option>
+                                    </optgroup>
+                                    <optgroup label="西北">
+                                        <option value="西安">西安</option>
+                                        <option value="兰州">兰州</option>
+                                        <option value="银川">银川</option>
+                                        <option value="乌鲁木齐">乌鲁木齐</option>
+                                    </optgroup>
+                                    <optgroup label="中北">
+                                        <option value="沈阳">沈阳</option>
+                                        <option value="长春">长春</option>
+                                        <option value="哈尔滨">哈尔滨</option>
+                                        <option value="烟台">烟台</option>
+                                        <option value="青岛">青岛</option>
+                                        <option value="济南">济南</option>
+                                        <option value="郑州">郑州</option>
+                                    </optgroup>
+                                    <optgroup label="西南">
+                                        <option value="成都">成都</option>
+                                        <option value="昆明">昆明</option>
+                                        <option value="贵阳">贵阳</option>
+                                        <option value="拉萨">拉萨</option>
+                                    </optgroup>
+                                    <optgroup label="华南">
+                                        <option value="深圳">深圳</option>
+                                        <option value="珠海">珠海</option>
+                                        <option value="南宁">南宁</option>
+                                        <option value="惠州">惠州</option>
+                                        <option value="海南">海南</option>
+                                    </optgroup>
+                                    <optgroup label="中东">
+                                        <option value="南京">南京</option>
+                                        <option value="徐州">徐州</option>
+                                        <option value="苏州">苏州</option>
+                                        <option value="昆山">昆山</option>
+                                        <option value="合肥">合肥</option>
+                                        <option value="芜湖">芜湖</option>
+                                        <option value="无锡">无锡</option>
+                                        <option value="南通">南通</option>
+                                    </optgroup>
+                                    <optgroup label="中南">
+                                        <option value="武汉">武汉</option>
+                                        <option value="长沙">长沙</option>
+                                        <option value="重庆">重庆</option>
+                                        <option value="宜昌">宜昌</option>
+                                    </optgroup>
+                                    <optgroup label="东南">
+                                        <option value="广州">广州</option>
+                                        <option value="东莞">东莞</option>
+                                        <option value="厦门">厦门</option>
+                                        <option value="佛山">佛山</option>
+                                        <option value="福州">福州</option>
+                                    </optgroup>
+                                </select>
+                            </div>
+                            <div class="col-md-4 form-group kone_input_area half_input">
+                                <label for="">签订日期</label>
+                                <input type="text" class="form-control dateIn" placeholder="开始日期">
+                                <input type="text" class="form-control dateIn" placeholder="结束日期">
+                            </div>
+                            <div class="col-md-4 form-group kone_input_area half_input">
+                                <label for="">项目金额(万元)</label>
+                                <input type="number" class="form-control" placeholder="最小金额">
+                                <input type="number" class="form-control" placeholder="最大金额">
+                            </div>
+                        </div>
+                        <div class="col-md-2 col-xs-12">
+                            <div class="kone_d_but" style="margin-top:25px;">搜索</div>
+                        </div>
+                    </div>
+                    <!-- 用户信息 -->
+                    <div class="device-info" id="table_list">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th>项目编号</th>
+                                    <th>项目名称</th>
+                                    <th>项目金额</th>
+                                    <th>客户单位</th>
+                                    <th>区域</th>
+                                    <th>签订日期</th>
+                                    <th>操作</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td>01312903210</td>
+                                    <td>上海某公司示例项目</td>
+                                    <td>80</td>
+                                    <td>上海某公司</td>
+                                    <td>上海</td>
+                                    <td>2018-06-10</td>
+                                    <td data-toggle="modal" data-target="#m-detail1"><i class="iconfont">&#xe895;</i></td>
+                                </tr>
+                                <tr>
+                                    <td>01312903210</td>
+                                    <td>上海某公司示例项目</td>
+                                    <td>80</td>
+                                    <td>上海某公司</td>
+                                    <td>上海</td>
+                                    <td>2018-06-10</td>
+                                    <td data-toggle="modal" data-target="#m-detail1"><i class="iconfont">&#xe895;</i></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<!-- Modal -->
+<div class="modal fade" id="m-detail1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">项目信息</h4>
+            </div>
+            <div class="modal-body">
+                <div class="basic-info form-horizontal">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-6 form-group ">
+                            <label class="col-xs-3 col-sm-6 col-md-4 col-lg-4 control-label">项目编号</label>
+                            <div class="col-xs-9 col-sm-6 col-md-8 col-lg-8">
+                                <input class="form-control" type="text" name="labName" value="01312903210" disabled>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 form-group ">
+                            <label class="col-xs-3 col-sm-6 col-md-4 col-lg-4 control-label">项目名称</label>
+                            <div class="col-xs-9 col-sm-6 col-md-8 col-lg-8">
+                                <input class="form-control" type="text" name="labName" value="上海某公司示例项目" disabled>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 form-group ">
+                            <label class="col-xs-3 col-sm-6 col-md-4 col-lg-4 control-label">项目金额(万元)</label>
+                            <div class="col-xs-9 col-sm-6 col-md-8 col-lg-8">
+                                <input class="form-control" type="text" name="labName" value="80" disabled>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 form-group ">
+                            <label class="col-xs-3 col-sm-6 col-md-4 col-lg-4 control-label">客户单位</label>
+                            <div class="col-xs-9 col-sm-6 col-md-8 col-lg-8">
+                                <input class="form-control" type="text" name="labName" value="上海某公司" disabled>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 form-group ">
+                            <label class="col-xs-3 col-sm-6 col-md-4 col-lg-4 control-label">区域</label>
+                            <div class="col-xs-9 col-sm-6 col-md-8 col-lg-8">
+                                <input class="form-control" type="text" name="labName" value="上海" disabled>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 form-group ">
+                            <label class="col-xs-3 col-sm-6 col-md-4 col-lg-4 control-label">签订日期</label>
+                            <div class="col-xs-9 col-sm-6 col-md-8 col-lg-8">
+                                <input class="form-control" type="text" name="labName" value="2018-06-10" disabled>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <!--<button type="button" class="delete pull-left">删除</button>-->
+                <button type="button" data-dismiss="modal" class="save pull-right">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title" id="">数据导入</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="basic-info form-horizontal">
+                        <div class="row">
+                            <div class="col-md-12 form-group">
+                                <label class="col-xs-3 col-sm-6 col-md-4 col-lg-4 control-label">接口地址</label>
+                                <div class="col-md-12">
+                                    <input class="form-control" type="text" name="labName" value="http://kone.com/DataAnalyticsTool/test">
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-12 form-group ">
+                                <label class="col-xs-3 col-sm-6 col-md-4 col-lg-4 control-label">最近数据导入时间</label>
+                                <div class="col-md-12">
+                                    <input class="form-control" disabled type="text" name="labName"  value="2018-12-12">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="data_loading">
+                       <div class="data_ing">
+                           <img src="img/loadind.gif" alt="">
+                           <span>数据导入中,请稍候...</span>
+                       </div>
+                       <div class="data_done">
+                           <i class="iconfont" style="color: #00a651">&#xe63a;</i>
+                           <span>导入成功</span>
+                       </div>
+                    </div>
+
+                    <!--<button type="button" class="delete pull-left">删除</button>-->
+                    <button type="button" id="putInData" class="save pull-right">导入</button>
+                    <script>
+                        $("#putInData").click(function () {
+                            $(".data_done").hide();
+                            $(".data_ing").show();
+                            setTimeout(function () {
+                                $(".data_ing").hide();
+                                $(".data_done").show();
+                                var test = $("#table_list tbody tr:eq(0)").clone();
+                                for (var i=0;i<5;i++){
+                                    $("#table_list tbody").append(test.clone())
+                                }
+                                setTimeout(function () {
+                                    $('#myModal').modal('hide')
+                                },500)
+                            },2000)
+                        });
+                    </script>
+                </div>
+            </div>
+        </div>
+    </div>
+<!--mine-->
+<div class="modal fade" id="mine" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title" id="">我的信息</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="basic-info form-horizontal">
+                        <ul id="myTab" class="nav nav-tabs">
+                            <li class="active"><a href="#pasw" data-toggle="tab">密码</a></li>
+                            <li><a href="#history" data-toggle="tab">历史记录</a></li>
+                            <li><a href="#lang" data-toggle="tab">系统语言</a></li>
+                        </ul>
+                        <div id="myTabContent" class="tab-content">
+                            <div class="tab-pane fade in active" id="pasw">
+                                <div class="row" style="padding-top: 20px;">
+                                    <div class="col-xs-8 col-sm-8 form-group ">
+                                        <label class="col-xs-3 col-sm-6 col-md-4 control-label">新密码</label>
+                                        <div class="col-xs-9 col-sm-6 col-md-8 col-lg-8">
+                                            <input class="form-control" type="text" name="labName" id="">
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-8 col-sm-8 form-group ">
+                                        <label class="col-xs-3 col-sm-6 col-md-4 control-label">确认密码</label>
+                                        <div class="col-xs-9 col-sm-6 col-md-8 col-lg-8">
+                                            <input class="form-control" type="text" name="labName" id="">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="history">
+                                <div class="row">
+                                    <div class="device-info">
+                                        <div class="table-responsive">
+                                            <table class="table">
+                                                <thead>
+                                                <tr>
+                                                    <th>暂无记录</th>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="lang">
+                               <div class="row" style="margin-top:20px;">
+                                   <div class="col-xs-12 col-md-6">
+                                       <select class="" name="place" id="language">
+                                           <option value="1">中文</option>
+                                           <option value="2">English</option>
+                                       </select>
+                                       <!--<script>-->
+                                           <!--$(document).ready(function () {-->
+                                               <!--$('#language').select2();-->
+                                           <!--});-->
+                                       <!--</script>-->
+                                   </div>
+                               </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="save pull-left" onclick="window.location.href='login.html'">退出登录</button>
+                    <button type="button" class="save pull-right">完成</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+</html>
